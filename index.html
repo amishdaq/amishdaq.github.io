@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>عبدالاله المشدق  | Portfolio</title>
+  <meta name="description" content="بورتفوليو عبدالاله المشدق - علوم حاسب | Java, Python, SQL, Flutter" />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --text:#e9eefc;
+      --muted:#b6c2e2;
+      --accent:#4ea1ff;
+      --border:rgba(255,255,255,.08);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1040px;
+      --gap: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(78,161,255,.25), transparent 55%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(120,97,255,.22), transparent 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:22px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:14px 22px;
+      max-width:var(--max); margin:0 auto;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .dot{width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 18px rgba(78,161,255,.7)}
+    .nav-links{display:flex; gap:14px; flex-wrap:wrap}
+    .nav-links a{
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      border-color:var(--border);
+      background: rgba(255,255,255,.04);
+    }
+
+    .hero{
+      padding:54px 0 18px;
+      display:grid;
+      grid-template-columns: 1.4fr .9fr;
+      gap:24px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr; padding-top:34px}
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-main{padding:26px}
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      color:var(--muted);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:14px;
+      margin-bottom:14px;
+    }
+    h1{margin:0 0 10px; font-size:40px; line-height:1.15}
+    @media (max-width: 520px){ h1{font-size:34px} }
+    .subtitle{color:var(--muted); margin:0 0 18px; font-size:16px}
+
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:600;
+      transition:.15s transform ease, .15s background ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.07)}
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(78,161,255,.28), rgba(78,161,255,.12));
+      border-color: rgba(78,161,255,.35);
+    }
+    .btn.primary:hover{background: linear-gradient(180deg, rgba(78,161,255,.35), rgba(78,161,255,.16))}
+
+    .hero-side{padding:22px; display:flex; flex-direction:column; gap:14px}
+    .mini{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .mini h3{margin:0 0 8px; font-size:14px; color:var(--muted); font-weight:700}
+    .mini p{margin:0; font-weight:600}
+    .mini a{color:var(--accent)}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .chip{
+      padding:8px 10px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    section{padding:20px 0}
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between; gap:16px;
+      margin-bottom:14px;
+    }
+    .section-title h2{margin:0; font-size:22px}
+    .section-title span{color:var(--muted); font-size:14px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns: repeat(2,1fr);} }
+    @media (max-width: 640px){ .grid{grid-template-columns: 1fr;} }
+
+    .box{padding:18px}
+    .box h3{margin:0 0 8px; font-size:17px}
+    .box p{margin:0; color:var(--muted)}
+    .meta{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
+    .tag{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .proj-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .proj-actions a{font-size:13px}
+
+    .footer{
+      margin-top:24px;
+      padding:18px 0 40px;
+      color:var(--muted);
+      border-top:1px solid var(--border);
+    }
+
+    /* smooth scroll */
+    html{scroll-behavior:smooth}
+
+    /* ✅ اضافات بسيطة بدون ما تغيّر شكل التصميم */
+    .lang-toggle{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang-toggle button{
+      cursor:pointer;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding:8px 10px;
+      border-radius:12px;
+      font-weight:600;
+    }
+    .lang-toggle button:hover{
+      background: rgba(255,255,255,.07);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span data-ar="عبدالاله المشدق" data-en="Abduleleh Almishdaq">عبدالاله</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about" data-ar="عني" data-en="About">عني</a>
+        <a href="#skills" data-ar="المهارات" data-en="Skills">المهارات</a>
+        <a href="#certs" data-ar="الشهادات" data-en="Certificates">الشهادات</a>
+        <a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a>
+        <a href="#contact" data-ar="التواصل" data-en="Contact">التواصل</a>
+      </nav>
+
+      <!-- ✅ زر اللغة (بدون تغيير ترتيب الصفحة) -->
+      <div class="lang-toggle" aria-label="Language toggle">
+        <button type="button" onclick="setLang('ar')">AR</button>
+        <button type="button" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="card hero-main">
+        <div class="kicker" data-ar="👋 علوم حاسب • طالب/مطوّر" data-en="👋 Computer Science • Student/Developer">
+          👋 علوم حاسب • طالب/مطوّر
+        </div>
+
+        <h1 data-ar=" عبدالاله المشدق" data-en="Abdulaleh Almishdaq">عبدالاله</h1>
+
+        <p class="subtitle"
+           data-ar="متخصص علوم حاسب، مهتم بتطوير التطبيقات وتحليل البيانات. أعمل على مشاريع باستخدام Java وPython وSQL، وأتعلّم حاليًا Flutter."
+           data-en="Computer Science student interested in software development and data analysis. I build projects using Java, Python, and SQL, and I am currently learning Flutter.">
+          متخصص علوم حاسب، مهتم بتطوير التطبيقات وتحليل البيانات.
+          أعمل على مشاريع باستخدام <strong>Java</strong> و<strong>Python</strong> و<strong>SQL</strong>، وأتعلّم حاليًا <strong>Flutter</strong>.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#projects" data-ar="شاهد المشاريع" data-en="View Projects">شاهد المشاريع</a>
+          <a class="btn" href="#contact" data-ar="تواصل معي" data-en="Contact Me">تواصل معي</a>
+          <a class="btn" href="https://github.com/amishdaq" target="_blank" rel="noreferrer" data-ar="GitHub: amishdaq" data-en="GitHub: amishdaq">GitHub: amishdaq</a>
+        </div>
+
+        <div class="chips" aria-label="Highlights">
+          <span class="chip">Java</span>
+          <span class="chip">Python</span>
+          <span class="chip">SQL</span>
+          <span class="chip" data-ar="Flutter (قيد التعلّم)" data-en="Flutter (Learning)">Flutter (قيد التعلّم)</span>
+          <span class="chip">Excel</span>
+          <span class="chip">Power BI</span>
+        </div>
+      </div>
+
+      <aside class="card hero-side">
+        <div class="mini">
+          <h3 data-ar="📧 البريد" data-en="📧 Email">📧 البريد</h3>
+          <p>
+            <a href="mailto:amishdaq66@gmail.com">amishdaq66@gmail.com</a>
+            <br>
+            <!-- ✅ رقم الجوال تحت الإيميل -->
+            <span style="color:var(--muted)" data-ar="📱 الجوال:" data-en="📱 Phone:">📱 الجوال:</span>
+            <a href="tel:+966502166303" style="color:var(--accent)">+966 502166303</a>
+          </p>
+        </div>
+
+        <div class="mini">
+          <h3 data-ar="🎯 تركيزي الحالي" data-en="🎯 Current Focus">🎯 تركيزي الحالي</h3>
+          <p data-ar="بناء تطبيقات (Flutter) + مشاريع Data Analysis بـ Python/SQL"
+             data-en="Building apps (Flutter) + Data Analysis projects with Python/SQL">
+            بناء تطبيقات (Flutter) + مشاريع Data Analysis بـ Python/SQL
+          </p>
+        </div>
+
+        <div class="mini">
+          <h3 data-ar="🧩 روابط سريعة" data-en="🧩 Quick Links">🧩 روابط سريعة</h3>
+          <p>
+            <a href="https://github.com/amishdaq" target="_blank" rel="noreferrer">GitHub</a>
+            <span style="color:var(--muted)"> • </span>
+            <a href="#projects" data-ar="المشاريع" data-en="Projects">Projects</a>
+            <span style="color:var(--muted)"> • </span>
+            <a href="#certs" data-ar="الشهادات" data-en="Certificates">Certificates</a>
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-title">
+        <h2 data-ar="عني" data-en="About Me">عني</h2>
+        <span data-ar="نبذة مختصرة" data-en="Short Bio">نبذة مختصرة</span>
+      </div>
+
+      <div class="card box">
+        <p style="margin:0; color:var(--muted)"
+           data-ar="أنا عبدالاله، تخصصي علوم حاسب. أحب تحويل الأفكار إلى حلول عملية عبر تطوير التطبيقات أو تحليل البيانات. لدي أساس قوي في Java وPython وSQL، ومعي شهادات في Python وتحليل البيانات، وأطور نفسي حاليًا في Flutter لبناء تطبيقات موبايل حديثة."
+           data-en="I’m Abdulaleh, a Computer Science student. I enjoy turning ideas into practical solutions through app development and data analysis. I have strong foundations in Java, Python, and SQL, with certificates in Python and Data Analysis, and I’m currently learning Flutter to build modern mobile apps.">
+          أنا <strong>عبدالاله</strong>، تخصصي <strong>علوم حاسب</strong>. أحب تحويل الأفكار إلى حلول عملية سواءً عبر
+          تطوير التطبيقات أو تحليل البيانات. لدي خبرة وأساس قوي في <strong>Java</strong> و<strong>Python</strong> و<strong>SQL</strong>،
+          ومعي شهادات في Python وتحليل البيانات، وأطور نفسي حاليًا في <strong>Flutter</strong> لبناء تطبيقات موبايل حديثة.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title">
+        <h2 data-ar="المهارات" data-en="Skills">المهارات</h2>
+        <span data-ar="تقنيات وأدوات أستخدمها" data-en="Technologies & Tools">تقنيات وأدوات أستخدمها</span>
+      </div>
+
+      <div class="grid">
+        <div class="card box">
+          <h3 data-ar="برمجة" data-en="Programming">برمجة</h3>
+          <p data-ar="Java • Python • SQL" data-en="Java • Python • SQL">Java • Python • SQL</p>
+          <div class="meta">
+            <span class="tag">OOP</span>
+            <span class="tag">Data Structures</span>
+            <span class="tag">Problem Solving</span>
+          </div>
+        </div>
+
+        <div class="card box">
+          <h3 data-ar="تحليل بيانات" data-en="Data Analysis">تحليل بيانات</h3>
+          <p data-ar="Python • SQL • Excel • Power BI" data-en="Python • SQL • Excel • Power BI">Python • SQL • Excel • Power BI</p>
+          <div class="meta">
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Dashboards</span>
+            <span class="tag">Reporting</span>
+          </div>
+        </div>
+
+        <div class="card box">
+          <h3 data-ar="تطوير تطبيقات" data-en="App Development">تطوير تطبيقات</h3>
+          <p data-ar="Flutter (قيد التعلّم)" data-en="Flutter (Learning)">Flutter (قيد التعلّم)</p>
+          <div class="meta">
+            <span class="tag">UI</span>
+            <span class="tag">State</span>
+            <span class="tag">API Integration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTS -->
+    <section id="certs">
+      <div class="section-title">
+        <h2 data-ar="الشهادات" data-en="Certificates">الشهادات</h2>
+        <span data-ar="إنجازات تعليمية" data-en="Learning Achievements">إنجازات تعليمية</span>
+      </div>
+
+      <div class="grid">
+        <div class="card box">
+          <h3 data-ar="شهادة إتمام كورسات Python" data-en="Python Courses Certificate">شهادة إتمام كورسات Python</h3>
+          <p data-ar="Coursera" data-en="Coursera">Coursera</p>
+          <div class="meta">
+            <span class="tag">Python</span>
+            <span class="tag">Fundamentals</span>
+          </div>
+        </div>
+
+        <div class="card box">
+          <h3 data-ar="شهادة تحليل بيانات" data-en="Data Analysis Certificate">شهادة تحليل بيانات</h3>
+          <p data-ar="معهد الخبراء — باستخدام Python و SQL و Excel و Power BI"
+             data-en="Al-Khubara Institute — using Python, SQL, Excel, and Power BI">
+            معهد الخبراء — باستخدام Python و SQL و Excel و Power BI
+          </p>
+          <div class="meta">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Power BI</span>
+          </div>
+        </div>
+
+        <div class="card box">
+          <h3 data-ar="Flutter (مسار تعلّم)" data-en="Flutter (Learning Path)">Flutter (Learning Path)</h3>
+          <p data-ar=" حاليًا اسعى لتعلم بناء تطبيقات موبايل باستخدام Flutter"
+             data-en="Currently learning to build mobile apps using Flutter">
+            أتعلم حاليًا بناء تطبيقات موبايل باستخدام Flutter
+          </p>
+          <div class="meta">
+            <span class="tag">Dart</span>
+            <span class="tag">Widgets</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title">
+        <h2 data-ar="المشاريع" data-en="Projects">المشاريع</h2>
+        <span data-ar="مشاريعي الجامعية" data-en="Academic Projects">مشاريعي الجامعية</span>
+      </div>
+
+      <div class="grid">
+        <article class="card box">
+          <h3 data-ar="نظام إدارة المستشفى" data-en="Hospital Management System">نظام إدارة المستشفى</h3>
+          <p data-ar="مشروع هندسة برمجيات لإدارة عمليات المستشفى (مرضى، مواعيد، أطباء، مختبر، صيدلية) بتصميم منظم للنظام."
+             data-en="Software Engineering project to manage hospital operations (patients, appointments, doctors, lab, pharmacy) with structured system design.">
+            مشروع هندسة برمجيات لإدارة عمليات المستشفى (مرضى، مواعيد، أطباء، مختبر، صيدلية) بتصميم منظم للنظام.
+          </p>
+          <div class="meta">
+            <span class="tag">Software Engineering</span>
+            <span class="tag">System Design</span>
+          </div>
+        </article>
+
+        <article class="card box">
+          <h3 data-ar="نظام تحسين الإنتاجية" data-en="Productivity Improvement System">نظام تحسين الإنتاجية</h3>
+          <p data-ar="نظام لتحليل وتحسين الإنتاجية عبر تتبع المهام ومؤشرات الأداء وإظهار فرص التحسين."
+             data-en="System to analyze and improve productivity by tracking tasks, KPIs, and presenting optimization insights.">
+            نظام لتحليل وتحسين الإنتاجية عبر تتبع المهام ومؤشرات الأداء وإظهار فرص التحسين.
+          </p>
+          <div class="meta">
+            <span class="tag">Analysis</span>
+            <span class="tag">KPIs</span>
+          </div>
+        </article>
+
+        <article class="card box">
+          <h3 data-ar="مشروع قواعد البيانات" data-en="Database Project (ERD & SQL)">مشروع قواعد البيانات</h3>
+          <p data-ar="تصميم ERD وتحويله إلى نموذج علائقي وتنفيذ استعلامات SQL لإدارة بيانات منظمة."
+             data-en="Designed an ERD, mapped it to a relational model, and implemented SQL queries to manage structured data.">
+            تصميم ERD وتحويله إلى نموذج علائقي وتنفيذ استعلامات SQL لإدارة بيانات منظمة.
+          </p>
+          <div class="meta">
+            <span class="tag">SQL</span>
+            <span class="tag">ERD</span>
+          </div>
+        </article>
+
+        <article class="card box">
+          <h3 data-ar="مشروع تلخيص النصوص (NLP)" data-en="Text Summarization (NLP)">مشروع تلخيص النصوص (NLP)</h3>
+          <p data-ar="مشروع معالجة لغات طبيعية لتلخيص النصوص تلقائيًا باستخدام Python وتقنيات NLP."
+             data-en="NLP project for automatic text summarization using Python and NLP techniques.">
+            مشروع معالجة لغات طبيعية لتلخيص النصوص تلقائيًا باستخدام Python وتقنيات NLP.
+          </p>
+          <div class="meta">
+            <span class="tag">Python</span>
+            <span class="tag">NLP</span>
+          </div>
+        </article>
+
+        <article class="card box">
+          <h3 data-ar="نظام الاستشارات القانونية" data-en="Legal Consultation System">نظام الاستشارات القانونية</h3>
+          <p data-ar="نظام ذكي للاستشارات القانونية يعتمد على استرجاع النصوص القانونية وتلخيص المواد ذات العلاقة لدعم الإجابة."
+             data-en="AI-based legal consultation system that retrieves legal texts and summarizes relevant articles to support answers.">
+            نظام ذكي للاستشارات القانونية يعتمد على استرجاع النصوص القانونية وتلخيص المواد ذات العلاقة لدعم الإجابة.
+          </p>
+          <div class="meta">
+            <span class="tag">AI</span>
+            <span class="tag">Retrieval</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title">
+        <h2 data-ar="التواصل" data-en="Contact">التواصل</h2>
+        <!-- <span data-ar="خلّنا نتواصل" data-en="Let’s connect">خلّنا نتواصل</span> -->
+      </div>
+
+      <div class="grid">
+        <div class="card box">
+          <h3 data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</h3>
+          <p>
+            <a href="mailto:amishdaq66@gmail.com" style="color:var(--accent)">amishdaq66@gmail.com</a>
+            <br><br>
+            <span style="color:var(--muted)" data-ar="رقم الجوال:" data-en="Phone:">رقم الجوال:</span>
+            <a href="tel:+966502166303" style="color:var(--accent)">+966 502166303</a>
+          </p>
+          <div class="meta"><span class="tag" data-ar="اضغط للإرسال/الاتصال" data-en="Tap to email/call">اضغط للإرسال/الاتصال</span></div>
+        </div>
+
+        <div class="card box">
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/amishdaq" target="_blank" rel="noreferrer" style="color:var(--accent)">github.com/amishdaq</a></p>
+          <div class="meta"><span class="tag" data-ar="مشاريعي" data-en="My work">مشاريعي</span></div>
+        </div>
+
+        <!-- <div class="card box">
+          <h3 data-ar="رسالة سريعة" data-en="Quick Note">رسالة سريعة</h3>
+          <p style="color:var(--muted); margin:0"
+             data-ar="إذا تبي، أقدر أضيف زر تحميل السيرة الذاتية (CV) وإضافة روابط GitHub لكل مشروع."
+             data-en="If you want, I can add a CV download button and GitHub links for each project.">
+            إذا تبي، أقدر أضيف زر تحميل السيرة الذاتية (CV) وإضافة روابط GitHub لكل مشروع.
+          </p>
+        </div> -->
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container" style="padding:0">
+        © <span id="year"></span> <span data-ar="عبدالاله — Portfolio" data-en="Abdulaleh — Portfolio">عبدالاله — Portfolio</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // السنة
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // لغة افتراضية (AR)
+    let currentLang = 'ar';
+
+    function setLang(lang){
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+      document.querySelectorAll('[data-ar][data-en]').forEach(el=>{
+        el.textContent = el.getAttribute(lang === 'ar' ? 'data-ar' : 'data-en');
+      });
+    }
+
+    // ابدأ بالعربي (مثل ملفك الأصلي)
+    setLang('en');
+  </script>
+</body>
+</html>
